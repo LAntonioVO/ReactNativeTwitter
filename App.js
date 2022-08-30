@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {Text, View} from 'react-native';
+import {Button, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import DrawerNavigator from './src/navigations/drawer';
 
-const App = () => {
+export default function App() {
   return (
-    <View>
-      <Text>Hello Word!</Text>
-    </View>
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
   );
-};
-export default App;
+}
