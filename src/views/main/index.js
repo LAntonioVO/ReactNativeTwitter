@@ -1,11 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Post from '../../components/post';
 
 const MainContent = () => {
   return (
-    <View style={{display: 'flex', justifyContent: 'center'}}>
-      <Text style={{fontFamily: 'Arial', fontSize: 15}}>FEED</Text>
+    <View>
+      <ScrollView>
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </ScrollView>
     </View>
   );
 };
