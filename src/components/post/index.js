@@ -1,27 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button, Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {LogBox} from 'react-native';
+import firebase from '../../services/firebase.js';
+// Ignore log notification by messag
 
-const post = {
-  user: {
-    id: 123,
-    avatar:
-      'https://pickaface.net/gallery/avatar/unr_example_161122_0416_qss004g.png',
-    name: 'Joselito juan xd',
-    username: '@josejuanxd',
-    verified: true,
-  },
-  text: 'MY FIRST APP USING REACT NATIVE!! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta totam doloribus ipsa vitae eligendi saepe ducimus obcaecati porro libero! Repellendus et quod sunt maxime odit earum esse tempora odio officia?',
-  image:
-    'https://blog.digital-pineapple.com.mx/wp-content/uploads/2021/01/0_oZLL-N4dGNlBe4Oh.png',
-  commentsNumber: 12,
-  sharesNumber: 34,
-  likesNumer: 134,
-  likedByMe: true,
-};
+const Post = ({post}) => {
+  useEffect(() => {
+    console.log('EL POST:', post);
+  }, [post]);
 
-const Post = () => {
+  const [count, setCount] = useState(0);
+
   return (
     <View style={{backgroundColor: '#fff', margin: 10, borderRadius: 10}}>
       <View
@@ -95,20 +86,21 @@ const Post = () => {
           justifyContent: 'space-around',
         }}>
         <Icon.Button
+          onPress={() => setCount(count + 1)}
           name={post.likedByMe ? 'favorite' : 'favorite-border'}
           backgroundColor={'white'}
           color={post.likedByMe ? 'red' : 'gray'}>
-          <Text style={{fontSize: 15, color: 'gray'}}>{post.likesNumer}</Text>
+          <Text style={{fontSize: 15, color: 'gray'}}>{post.likesCount}</Text>
         </Icon.Button>
 
         <Icon.Button name="comment" backgroundColor={'white'} color="gray">
           <Text style={{fontSize: 15, color: 'gray'}}>
-            {post.commentsNumber}
+            {post.commentsCount}
           </Text>
         </Icon.Button>
 
         <Icon.Button name="share" backgroundColor={'white'} color="gray">
-          <Text style={{fontSize: 15, color: 'gray'}}>{post.sharesNumber}</Text>
+          <Text style={{fontSize: 15, color: 'gray'}}>{post.sharesCount}</Text>
         </Icon.Button>
       </View>
     </View>
